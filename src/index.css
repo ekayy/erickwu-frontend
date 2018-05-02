@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Lora', serif !important;
+}
+
+p,
+div,
+button,
+a {
+  font-family: 'Source Sans Pro', sans-serif;
+  /* color: #fff; */
+}
+
+.menu a {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a.ui.button {
+  margin: 2em 0 0 0;
+  border-radius: 20px;
+  padding: 1em 4em;
+}
+
+.hero {
+  height: 100vh;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+
+.hero a.ui.button {
+  color: #000;
+  border: 2px solid #000;
+  background-color: transparent;
+}
+
+.hero a.ui.button:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.ui.massive.menu {
+  padding: 4rem;
+  z-index: 1;
+  border: none !important;
+}
+.header.ui.menu {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .ui.massive.menu {
+    padding: 0;
+    position: absolute;
+  }
+  .footer.ui.menu {
+    position: relative;
+  }
+  .hero-image {
+    margin-top: 0 !important;
+    height: 100%;
+  }
+  .wrapper {
+    position: relative;
+    top: 80px;
+  }
+  .about-image {
+    width: 200px !important;
+  }
+}
+
+.ui.menu .right .item {
+  padding: 0.5em 0;
+  margin: 0 1.14285714em;
+}
+
+.ui.menu .right .active.item {
+  background: transparent !important;
+}
+
+.ui.menu .item:hover {
+  background: transparent !important;
+}
+
+.ui.menu .right .item:before {
+  transition: 0.5s ease;
+}
+.ui.menu .right .item:before {
+  border-bottom: 1px solid #000;
+  opacity: 0;
+  width: 100%;
+}
+.ui.menu .right .active.item:before {
+  opacity: 0.7;
+}
+.ui.menu .right .item:hover:before {
+  opacity: 1;
+}
