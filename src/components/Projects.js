@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import { Container, Header, Image, Button } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Container, Header, Image, Button } from "semantic-ui-react";
 
-import './styles/projects.css';
-import bg from '../images/banner.jpg';
-import chunk from 'lodash/chunk';
+import "./styles/projects.css";
+import bg from "../images/banner.jpg";
+import chunk from "lodash/chunk";
 
-import LazyLoad from 'react-lazyload';
-import { Fade } from 'react-reveal';
-import { Link } from 'react-scroll';
+import LazyLoad from "react-lazyload";
+import { Fade } from "react-reveal";
+import { Link } from "react-scroll";
 
 class Projects extends Component {
   constructor() {
     super();
     this.state = {
-      projects: []
+      projects: [],
+      tags: []
     };
   }
 
@@ -27,14 +28,24 @@ class Projects extends Component {
           projects: res
         });
       });
+
+    let tagsList = `${process.env.REACT_APP_API_URL}/wp/v2/tags?per_page=20`;
+
+    fetch(tagsList)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          tags: res
+        });
+      });
   }
 
   componentWillUnmount() {}
 
   parseTitle(val) {
     return val
-      .split(' ')
-      .join('-')
+      .split(" ")
+      .join("-")
       .toLowerCase();
   }
 
@@ -46,6 +57,22 @@ class Projects extends Component {
         </Button>
       );
     }
+  }
+
+  renderTags(tagIds) {
+    const projectTags = this.state.tags.filter(
+      tag => tagIds.indexOf(tag.id) !== -1
+    );
+
+    const tagNames = projectTags.map(projectTag => projectTag.name);
+
+    return (
+      <ul className="project__tags">
+        {tagNames.sort().map(tagName => {
+          return <li className="project__tag">{tagName}</li>;
+        })}
+      </ul>
+    );
   }
 
   render() {
@@ -60,12 +87,16 @@ class Projects extends Component {
                 key={index}
                 className={`${this.parseTitle(project.title.rendered)} project`}
               >
-                <Image src={project.better_featured_image.source_url} />
+                <LazyLoad height={300}>
+                  <Image src={project.better_featured_image.source_url} />
+                </LazyLoad>
                 <Container className="project-text" fluid>
-                  <Header as="h2" textAlign="center" style={{ color: '#fff' }}>
+                  {this.renderTags(project.tags)}
+
+                  <Header as="h2" textAlign="center" style={{ color: "#fff" }}>
                     {project.title.rendered}
                   </Header>
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: "center" }}>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: project.content.rendered
@@ -113,13 +144,13 @@ class Projects extends Component {
 const styles = {
   hero: {
     backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',
-    position: 'relative',
-    height: '100vh',
-    width: '100%',
-    opacity: '0.5',
-    marginTop: '-177px',
-    zIndex: '-1'
+    backgroundSize: "cover",
+    position: "relative",
+    height: "100vh",
+    width: "100%",
+    opacity: "0.5",
+    marginTop: "-177px",
+    zIndex: "-1"
   },
   button: {}
 };

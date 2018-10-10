@@ -92,7 +92,7 @@
 
 .project {
   background-repeat: repeat;
-  background-image: url('../../images/3px-tile.png');
+  background-image: url("../../images/3px-tile.png");
   /* flex: 0.5; */
   flex: 1;
 }
@@ -108,6 +108,21 @@
 }
 .project-text {
   padding: 4em 0;
+}
+
+.project__tags {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+}
+.project__tag {
+  padding: 0 1em;
+  border-right: 1px solid #fff;
+  color: #fff;
+}
+.project__tag:last-child {
+  border-right: none;
 }
 
 @media only screen and (max-width: 768px) {
