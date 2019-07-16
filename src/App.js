@@ -14,6 +14,8 @@ import Contact from './components/Contact';
 
 class App extends Component {
   render() {
+    const currentYear = new Date().getFullYear();
+
     return (
       <Router>
         <div style={styles.bg}>
@@ -59,7 +61,7 @@ class App extends Component {
               style={{ background: 'transparent' }}
               className="footer"
             >
-              <Menu.Item to="/">&copy; 2018 erickwu</Menu.Item>
+              <Menu.Item to="/">&copy; {currentYear} erickwu</Menu.Item>
               <Menu.Menu position="right">
                 <Menu.Item as={NavLink} to="/about">
                   About
