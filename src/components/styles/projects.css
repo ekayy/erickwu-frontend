@@ -22,6 +22,10 @@
   background-color: #800000;
 }
 
+.replace-hate {
+  background-color: #dadada;
+}
+
 .fox-innovation-labs {
   background-color: #2b367a;
 }
@@ -115,6 +119,7 @@
   justify-content: center;
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 .project__tag {
   padding: 0 1em;

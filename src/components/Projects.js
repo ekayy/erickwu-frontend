@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Container, Header, Image, Button } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Container, Header, Image, Button } from 'semantic-ui-react';
 
-import "./styles/projects.css";
-import bg from "../images/banner.jpg";
-import chunk from "lodash/chunk";
+import './styles/projects.css';
+import bg from '../images/banner.jpg';
+import chunk from 'lodash/chunk';
 
-import LazyLoad from "react-lazyload";
-import { Fade } from "react-reveal";
-import { Link } from "react-scroll";
+import LazyLoad from 'react-lazyload';
+import { Fade } from 'react-reveal';
+import { Link } from 'react-scroll';
 
 class Projects extends Component {
   constructor() {
@@ -44,8 +44,8 @@ class Projects extends Component {
 
   parseTitle(val) {
     return val
-      .split(" ")
-      .join("-")
+      .split(' ')
+      .join('-')
       .toLowerCase();
   }
 
@@ -86,6 +86,7 @@ class Projects extends Component {
               <div
                 key={index}
                 className={`${this.parseTitle(project.title.rendered)} project`}
+                style={project.acf.background_color}
               >
                 <LazyLoad height={300}>
                   <Image src={project.better_featured_image.source_url} />
@@ -93,10 +94,10 @@ class Projects extends Component {
                 <Container className="project-text" fluid>
                   {this.renderTags(project.tags)}
 
-                  <Header as="h2" textAlign="center" style={{ color: "#fff" }}>
+                  <Header as="h2" textAlign="center" style={{ color: '#fff' }}>
                     {project.title.rendered}
                   </Header>
-                  <div style={{ textAlign: "center" }}>
+                  <div style={{ textAlign: 'center' }}>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: project.content.rendered
@@ -144,13 +145,13 @@ class Projects extends Component {
 const styles = {
   hero: {
     backgroundImage: `url(${bg})`,
-    backgroundSize: "cover",
-    position: "relative",
-    height: "100vh",
-    width: "100%",
-    opacity: "0.5",
-    marginTop: "-177px",
-    zIndex: "-1"
+    backgroundSize: 'cover',
+    position: 'relative',
+    height: '100vh',
+    width: '100%',
+    opacity: '0.5',
+    marginTop: '-177px',
+    zIndex: '-1'
   },
   button: {}
 };
