@@ -5,14 +5,12 @@ import {
   NavLink,
   Link
 } from 'react-router-dom';
-import bg from './images/3px-tile.png';
+// import bg from './images/3px-tile.png';
 import { Menu } from 'semantic-ui-react';
 
 import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
-
-import { Fade } from 'react-reveal';
 
 class App extends Component {
   render() {

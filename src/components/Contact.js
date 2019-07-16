@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Button, Form } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { Fade } from 'react-reveal';
-import axios from 'axios';
 
 import LazyLoad from 'react-lazyload';
 import bg from '../images/banner.jpg';
