@@ -69,7 +69,11 @@ class Projects extends Component {
     return (
       <ul className="project__tags">
         {tagNames.sort().map(tagName => {
-          return <li className="project__tag">{tagName}</li>;
+          return (
+            <li className="project__tag" key={tagName}>
+              {tagName}
+            </li>
+          );
         })}
       </ul>
     );
@@ -86,7 +90,7 @@ class Projects extends Component {
               <div
                 key={index}
                 className={`${this.parseTitle(project.title.rendered)} project`}
-                style={project.acf.background_color}
+                style={{ backgroundColor: project.acf.background_color }}
               >
                 <LazyLoad height={300}>
                   <Image src={project.better_featured_image.source_url} />
