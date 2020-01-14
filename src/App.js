@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 // import bg from './images/3px-tile.png';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button, Icon } from 'semantic-ui-react';
 
 import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
 
 class App extends Component {
+  state = {
+    isListLayout: true
+  };
+
   render() {
     const currentYear = new Date().getFullYear();
+    const { isListLayout } = this.state;
 
     return (
       <Router>
@@ -24,10 +24,15 @@ class App extends Component {
               size="massive"
               borderless
               style={{
-                background: 'transparent',
                 boxShadow: 'none',
-                border: 'none'
+                border: 'none',
+                position: 'fixed',
+                // backgroundColor:'transparent',
+                margin: 0,
+                zIndex: 10,
+                top: 0
               }}
+              inverted
               className="header"
             >
               <Menu.Item as={Link} to="/">
@@ -43,24 +48,44 @@ class App extends Component {
                 <Menu.Item as={NavLink} to="/contact">
                   Contact
                 </Menu.Item>
+
+                <Menu.Item>
+                  <Button
+                    icon
+                    basic
+                    color=""
+                    onClick={() => this.setState({ isListLayout: true })}
+                    active={isListLayout}
+                    inverted
+                  >
+                    <Icon name="list layout" />
+                  </Button>
+                  <Button
+                    icon
+                    basic
+                    onClick={() => this.setState({ isListLayout: false })}
+                    active={!isListLayout}
+                    inverted
+                  >
+                    <Icon name="block layout" />
+                  </Button>
+                </Menu.Item>
               </Menu.Menu>
             </Menu>
 
             <div>
-              <Route path="/" exact component={Projects} />
+              <Route
+                path="/"
+                exact
+                render={props => <Projects {...props} isListLayout={isListLayout} />}
+              />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
             </div>
           </div>
 
           <div>
-            <Menu
-              size="massive"
-              attached="bottom"
-              borderless
-              style={{ background: 'transparent' }}
-              className="footer"
-            >
+            <Menu size="massive" attached="bottom" borderless inverted className="footer">
               <Menu.Item to="/">&copy; {currentYear} erickwu</Menu.Item>
               <Menu.Menu position="right">
                 <Menu.Item as={NavLink} to="/about">

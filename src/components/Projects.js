@@ -19,7 +19,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=15`;
+    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=20`;
 
     fetch(dataURL)
       .then(res => res.json())
@@ -60,9 +60,7 @@ class Projects extends Component {
   }
 
   renderTags(tagIds) {
-    const projectTags = this.state.tags.filter(
-      tag => tagIds.indexOf(tag.id) !== -1
-    );
+    const projectTags = this.state.tags.filter(tag => tagIds.indexOf(tag.id) !== -1);
 
     const tagNames = projectTags.map(projectTag => projectTag.name);
 
@@ -125,7 +123,7 @@ class Projects extends Component {
         <Container textAlign="center" className="hero" text>
           <Fade left>
             <Header as="h1" textAlign="center">
-              I am a web developer based in Los Angeles.
+              I provide technical and software development to creative clients.
             </Header>
             <Button
               as={Link}
@@ -140,7 +138,9 @@ class Projects extends Component {
           </Fade>
         </Container>
 
-        <div id="projects">{projects}</div>
+        <div id="projects" className={this.props.isListLayout ? 'list' : 'grid'}>
+          {projects}
+        </div>
       </div>
     );
   }
@@ -151,10 +151,10 @@ const styles = {
     backgroundImage: `url(${bg})`,
     backgroundSize: 'cover',
     position: 'relative',
-    height: '100vh',
+    height: '60vh',
     width: '100%',
     opacity: '0.5',
-    marginTop: '-177px',
+    marginTop: '-150px',
     zIndex: '-1'
   },
   button: {}

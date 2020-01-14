@@ -30,7 +30,7 @@ class About extends Component {
     const { content } = this.state;
 
     return (
-      <div>
+      <div className="page">
         <LazyLoad height={300}>
           <div style={styles.hero} className="hero-image" />
         </LazyLoad>

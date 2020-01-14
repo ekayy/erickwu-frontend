@@ -1,5 +1,7 @@
 .chenco-holdings,
-.fitted.tv {
+.fitted.tv,
+.project-row:first-child,
+.project-row:last-child {
   display: none;
 }
 

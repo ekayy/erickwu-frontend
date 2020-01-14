@@ -42,7 +42,7 @@ class Contact extends Component {
   render() {
     const { content } = this.state;
     return (
-      <div>
+      <div className="page">
         <LazyLoad>
           <div style={styles.hero} className="hero-image" />
         </LazyLoad>
