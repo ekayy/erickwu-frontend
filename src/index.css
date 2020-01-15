@@ -100,7 +100,7 @@ a.ui.button {
   }
 
   .header.ui.menu .item:last-child {
-    display: none;
+    display: none !important;
   }
 }
 

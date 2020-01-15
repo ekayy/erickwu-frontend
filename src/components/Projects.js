@@ -123,7 +123,7 @@ class Projects extends Component {
         <Container textAlign="center" className="hero" text>
           <Fade left>
             <Header as="h1" textAlign="center">
-              I provide technical and software development to creative clients.
+              I provide web/software development to creative clients.
             </Header>
             <Button
               as={Link}
