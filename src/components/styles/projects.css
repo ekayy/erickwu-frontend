@@ -113,6 +113,8 @@
 .project .ui.image {
   margin: 0 auto;
   padding: 4em 4em 0 4em;
+  max-width: 1400px;
+  width: 100%;
 }
 .project p {
   color: #fff;

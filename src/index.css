@@ -37,6 +37,7 @@ a.ui.button {
 
 .hero {
   height: 60vh;
+  min-height: 500px;
   display: flex !important;
   flex-direction: column;
   align-items: center;
@@ -46,6 +47,10 @@ a.ui.button {
   width: 100%;
   right: 0;
   left: 0;
+}
+
+.hero-image {
+  min-height: 500px;
 }
 
 .hero a.ui.button {

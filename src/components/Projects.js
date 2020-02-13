@@ -19,7 +19,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=20`;
+    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=30`;
 
     fetch(dataURL)
       .then(res => res.json())
@@ -29,7 +29,7 @@ class Projects extends Component {
         });
       });
 
-    let tagsList = `${process.env.REACT_APP_API_URL}/wp/v2/tags?per_page=20`;
+    let tagsList = `${process.env.REACT_APP_API_URL}/wp/v2/tags?per_page=30`;
 
     fetch(tagsList)
       .then(res => res.json())

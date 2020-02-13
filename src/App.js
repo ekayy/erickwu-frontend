@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 
 class App extends Component {
   state = {
-    isListLayout: true
+    isListLayout: false
   };
 
   render() {
