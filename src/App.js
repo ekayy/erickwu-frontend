@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 
 class App extends Component {
   state = {
-    isListLayout: false
+    isListLayout: false,
   };
 
   render() {
@@ -26,13 +26,13 @@ class App extends Component {
               style={{
                 boxShadow: 'none',
                 border: 'none',
-                position: 'fixed',
-                // backgroundColor:'transparent',
+                // position: 'fixed',
+                backgroundColor: 'transparent',
                 margin: 0,
                 zIndex: 10,
-                top: 0
+                top: 0,
               }}
-              inverted
+              // inverted
               className="header"
             >
               <Menu.Item as={Link} to="/">
@@ -56,7 +56,7 @@ class App extends Component {
                     color=""
                     onClick={() => this.setState({ isListLayout: true })}
                     active={isListLayout}
-                    inverted
+                    // inverted
                   >
                     <Icon name="list layout" />
                   </Button>
@@ -65,7 +65,7 @@ class App extends Component {
                     basic
                     onClick={() => this.setState({ isListLayout: false })}
                     active={!isListLayout}
-                    inverted
+                    // inverted
                   >
                     <Icon name="block layout" />
                   </Button>
@@ -106,8 +106,8 @@ class App extends Component {
 const styles = {
   bg: {
     backgroundRepeat: 'repeat',
-    height: '100%'
-  }
+    height: '100%',
+  },
 };
 
 export default App;

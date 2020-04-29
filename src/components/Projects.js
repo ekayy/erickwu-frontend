@@ -14,7 +14,8 @@ class Projects extends Component {
     super();
     this.state = {
       projects: [],
-      tags: []
+      tags: [],
+      headline: '',
     };
   }
 
@@ -25,7 +26,7 @@ class Projects extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          projects: res
+          projects: res,
         });
       });
 
@@ -35,7 +36,17 @@ class Projects extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          tags: res
+          tags: res,
+        });
+      });
+
+    let pageUrl = `${process.env.REACT_APP_API_URL}/wp/v2/pages/157`;
+
+    fetch(pageUrl)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          headline: res.content.rendered,
         });
       });
   }
@@ -43,10 +54,7 @@ class Projects extends Component {
   componentWillUnmount() {}
 
   parseTitle(val) {
-    return val
-      .split(' ')
-      .join('-')
-      .toLowerCase();
+    return val.split(' ').join('-').toLowerCase();
   }
 
   renderButton(href) {
@@ -79,6 +87,7 @@ class Projects extends Component {
 
   render() {
     let projects = chunk(this.state.projects, 1);
+    console.log(this.state.headline);
 
     projects = projects.map((section, index) => {
       return (
@@ -90,9 +99,9 @@ class Projects extends Component {
                 className={`${this.parseTitle(project.title.rendered)} project`}
                 style={{ backgroundColor: project.acf.background_color }}
               >
-                <LazyLoad height={300}>
-                  <Image src={project.better_featured_image.source_url} />
-                </LazyLoad>
+                {/* <LazyLoad height={300}> */}
+                <Image src={project.better_featured_image.source_url} />
+                {/* </LazyLoad> */}
                 <Container className="project-text" fluid>
                   {this.renderTags(project.tags)}
 
@@ -102,7 +111,7 @@ class Projects extends Component {
                   <div style={{ textAlign: 'center' }}>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: project.content.rendered
+                        __html: project.content.rendered,
                       }}
                       className="text"
                     />
@@ -118,12 +127,18 @@ class Projects extends Component {
 
     return (
       <div>
+        <div style={styles.bg} className="bg"></div>
         <div style={styles.hero} className="hero-image" />
 
         <Container textAlign="center" className="hero" text>
           <Fade left>
             <Header as="h1" textAlign="center">
-              I provide web/software development to creative clients.
+              <div
+                className="headline"
+                dangerouslySetInnerHTML={{
+                  __html: this.state.headline,
+                }}
+              />
             </Header>
             <Button
               as={Link}
@@ -147,17 +162,21 @@ class Projects extends Component {
 }
 
 const styles = {
-  hero: {
+  bg: {
     backgroundImage: `url(${bg})`,
+  },
+
+  hero: {
+    // backgroundImage: `url(${bg})`,
     backgroundSize: 'cover',
     position: 'relative',
     height: '60vh',
     width: '100%',
     opacity: '0.5',
     marginTop: '-150px',
-    zIndex: '-1'
+    zIndex: '-1',
   },
-  button: {}
+  button: {},
 };
 
 export default Projects;
