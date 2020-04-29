@@ -140,7 +140,7 @@ class Projects extends Component {
                 }}
               />
             </Header>
-            <Button
+            {/* <Button
               as={Link}
               to="projects"
               spy={true}
@@ -149,7 +149,7 @@ class Projects extends Component {
               style={styles.button}
             >
               View my work
-            </Button>
+            </Button> */}
           </Fade>
         </Container>
 
