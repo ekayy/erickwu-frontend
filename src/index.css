@@ -86,6 +86,10 @@ a.ui.button {
 }
 
 @media only screen and (max-width: 768px) {
+  #projects.grid {
+    display: block;
+  }
+
   .ui.massive.menu {
     padding: 0;
     position: absolute;
