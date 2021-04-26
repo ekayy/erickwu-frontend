@@ -20,7 +20,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=30`;
+    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=40}`;
 
     fetch(dataURL)
       .then(res => res.json())
