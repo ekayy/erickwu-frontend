@@ -20,7 +20,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=40}`;
+    let dataURL = `${process.env.REACT_APP_API_URL}/wp/v2/projects?per_page=50`;
 
     fetch(dataURL)
       .then(res => res.json())
@@ -30,7 +30,7 @@ class Projects extends Component {
         });
       });
 
-    let tagsList = `${process.env.REACT_APP_API_URL}/wp/v2/tags?per_page=30`;
+    let tagsList = `${process.env.REACT_APP_API_URL}/wp/v2/tags?per_page=50`;
 
     fetch(tagsList)
       .then(res => res.json())
@@ -68,7 +68,9 @@ class Projects extends Component {
   }
 
   renderTags(tagIds) {
-    const projectTags = this.state.tags.filter(tag => tagIds.indexOf(tag.id) !== -1);
+    const projectTags = this.state.tags.filter(
+      tag => tagIds.indexOf(tag.id) !== -1
+    );
 
     const tagNames = projectTags.map(projectTag => projectTag.name);
 
@@ -153,7 +155,10 @@ class Projects extends Component {
           </Fade>
         </Container>
 
-        <div id="projects" className={this.props.isListLayout ? 'list' : 'grid'}>
+        <div
+          id="projects"
+          className={this.props.isListLayout ? 'list' : 'grid'}
+        >
           {projects}
         </div>
       </div>
