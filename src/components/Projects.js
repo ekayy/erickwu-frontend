@@ -167,6 +167,7 @@ class Projects extends Component {
 const styles = {
   bg: {
     backgroundImage: `url(${bg})`,
+    backgroundSize: 'cover',
   },
 
   hero: {
