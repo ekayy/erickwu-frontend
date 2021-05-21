@@ -5,9 +5,7 @@ import './styles/projects.css';
 import bg from '../images/banner.jpg';
 import chunk from 'lodash/chunk';
 
-import LazyLoad from 'react-lazyload';
 import { Fade } from 'react-reveal';
-import { Link } from 'react-scroll';
 
 class Projects extends Component {
   constructor() {
